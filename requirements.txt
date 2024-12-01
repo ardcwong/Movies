@@ -1,5 +1,7 @@
-pickle
 pandas
 streamlit
 flask
 shap
+numpy
+scikit-learn
+imbalanced-learn
