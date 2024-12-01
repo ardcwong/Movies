@@ -6,12 +6,22 @@ import pandas as pd
 from flask import Flask
 import streamlit as st
 
+st.set_page_config(
+    page_title = "Predict the Next AAA Title!",
+    # initial_sidebar_state="expanded",
+    layout='wide',
+    menu_items={
+    'About': "### Hi! Thanks for viewing my app!"
+    }
+)
+
+
 # read model and holdout data
 model = pickle.load(open('xgb.pkl', 'rb'))
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
 holdout_transactions = X_holdout.index.to_list()
 
-st.markdown(f"""<h1 style='text-align: center;'>MAKE THE AAA MOVIE TITLE</h1>""", unsafe_allow_html=True)
+st.markdown(f"""<h1 style='text-align: center;'>PREDICT THE AAA MOVIE TITLE</h1>""", unsafe_allow_html=True)
 st.markdown(
             """
             <div style="
@@ -23,11 +33,18 @@ st.markdown(
                 color: white;
                 box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             ">
-                <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-                    Ready To Navigate Your Data Science Journey?
+                <h1 style="font-size: 20px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+                    Welcome to the AAA Movie Predictor!
                 </h1>
-                <p style="font-size: 18px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                    <strong>Learn and Be Guided with Confidence!</strong> EskwelApps is here to guide you every step of the way. Whether you're exploring the perfect learning path, seeking detailed program insights, or looking for a personalized assessment, we’ve got everything you need to thrive. <strong><br><br>Unlock Tools and Resources!</strong> Once enrolled, dive into our comprehensive course outline, get your questions answered with our bootcamp assistant, and easily set up your environment with our installation guide. Let EskwelApps support you in your Eskwelabs' data science journey.
+                <p style="font-size: 14px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
+                    A simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers
+The app provides clear results:
+
+AAA – The movie is predicted to qualify as a top-tier AAA title.
+Not AAA – The movie is less likely to qualify as an AAA title.
+To make the predictions easy to understand, the app also includes a SHAP (SHapley Additive exPlanations) force plot, which explains the influence of each factor on the prediction.
+
+Whether you're exploring movie data or evaluating your own projects, this app offers a practical way to gain insights!
                 </p>
             </div>
             """,
