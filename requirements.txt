@@ -5,3 +5,4 @@ shap
 numpy
 scikit-learn
 imbalanced-learn
+xgboost
