@@ -55,7 +55,8 @@ with col2:
            'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
            'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
            'Talk-Show', 'Thriller', 'War', 'Western'])
-        runtime = st.number_input("Runtime (Minutes)", step= "int", min_value = 0, max_value = 180)
+        runtime = st.number_input("Runtime (Minutes)", min_value = 0, max_value = 180)
+        
 
     with b:
         director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
