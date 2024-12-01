@@ -39,27 +39,28 @@ with col2:
                         Welcome to the AAA Movie Predictor!
                     </h1>
                     <p style="font-size: 16px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                        A simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers
+                        A simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers. The app provides clear results: AAA – The movie is predicted to qualify as a top-tier AAA title, Not AAA – The movie is less likely to qualify as an AAA title.
     
-    The app provides clear results: AAA – The movie is predicted to qualify as a top-tier AAA title, Not AAA – The movie is less likely to qualify as an AAA title.
-    
-    To make the predictions easy to understand, the app also includes a SHAP (SHapley Additive exPlanations) force plot, which explains the influence of each factor on the prediction.
-    
-    Whether you're exploring movie data or evaluating your own projects, this app offers a practical way to gain insights!
+    To make the predictions easy to understand, the app also includes a SHAP (SHapley Additive exPlanations) force plot, which explains the influence of each factor on the prediction. Whether you're exploring movie data or evaluating your own projects, this app offers a practical way to gain insights!
                     </p>
                 </div>
                 """,
                 unsafe_allow_html=True)
 
-    title = st.text_input("Movie Title")
-    genre = st.multiselect("Director",['Action', 'Adult', 'Adventure', 'Animation',
-       'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
-       'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
-       'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
-       'Talk-Show', 'Thriller', 'War', 'Western'])
-    director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
-    writer = st.multiselect("Writer/s", ["D1","D2"])
-    actor = st.multiselect("Actor/s", ["D1","D2"])
+    a, b = st.columns([1,1])
+    with a:
+        title = st.text_input("Movie Title")
+        genre = st.multiselect("Genre",['Action', 'Adult', 'Adventure', 'Animation',
+           'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+           'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
+           'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
+           'Talk-Show', 'Thriller', 'War', 'Western'])
+        runtime = st.number_input("Runtime (Minutes)", step= "int", min_value = 0, max_value = 180)
+
+    with b:
+        director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
+        writer = st.multiselect("Writer/s", ["D1","D2"])
+        actor = st.multiselect("Actor/s", ["D1","D2"])
     
 
 
