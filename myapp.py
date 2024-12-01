@@ -50,6 +50,21 @@ with col2:
                 </div>
                 """,
                 unsafe_allow_html=True)
+
+    title = st.text_input("Movie Title")
+    genre = st.multiselect("Director",['Action', 'Adult', 'Adventure', 'Animation',
+       'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+       'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
+       'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
+       'Talk-Show', 'Thriller', 'War', 'Western'])
+    director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
+    writer = st.multiselect("Writer/s", ["D1","D2"])
+    actor = st.multiselect("Actor/s", ["D1","D2"])
+    
+
+
+
+
     
 
     #adding a selectbox
