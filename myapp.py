@@ -23,7 +23,7 @@ holdout_transactions = X_holdout.index.to_list()
 
 col1, col2, col3 = st.columns([0.5, 3, 0.5])
 with col2:
-    st.markdown(f"""<h1 style='text-align: center;'>PREDICT THE AAA MOVIE TITLE</h1>""", unsafe_allow_html=True)
+    # st.markdown(f"""<h1 style='text-align: center;'>PREDICT THE AAA MOVIE TITLE</h1>""", unsafe_allow_html=True)
     st.markdown(
                 """
                 <div style="
@@ -35,11 +35,11 @@ with col2:
                     color: white;
                     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
                 ">
-                    <h1 style="font-size: 28px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-                        Welcome to the AAA Movie Predictor!
+                    <h1 style="font-size: 40px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
+                        PREDICT THE AAA MOVIE TITLE
                     </h1>
                     <p style="font-size: 16px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
-                        A simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers. The app provides clear results: AAA – The movie is predicted to qualify as a top-tier AAA title, Not AAA – The movie is less likely to qualify as an AAA title.
+                        Welcome to the AAA Movie Predictor, a simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers. The app provides clear results: AAA – The movie is predicted to qualify as a top-tier AAA title, Not AAA – The movie is less likely to qualify as an AAA title.
     
     To make the predictions easy to understand, the app also includes a SHAP (SHapley Additive exPlanations) force plot, which explains the influence of each factor on the prediction. Whether you're exploring movie data or evaluating your own projects, this app offers a practical way to gain insights!
                     </p>
