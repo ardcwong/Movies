@@ -117,6 +117,7 @@ with col2:
             shap_values_single = explainer(transaction,check_additivity=False)
             st.write(shap_values_single)
             st.write(explainer.expected_value)
+            st.write(transaction)
             shap_html = shap.force_plot(
                 explainer.expected_value, 
                 shap_values_single,  
