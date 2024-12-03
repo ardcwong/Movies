@@ -82,6 +82,7 @@ with col2:
         "Choose Movie to Predict:",
         options = X_holdout_id_map["primaryTitle"].to_list(),
         placeholder = "Type or Search the Movie. See (?) for more details.",
+        index = None,
         help = "These movies are treated as unseen data of the Predictive Model.")
     
     
