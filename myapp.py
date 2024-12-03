@@ -54,7 +54,9 @@ with col2:
                 </div>
                 """,
                 unsafe_allow_html=True)
-    
+
+    st.divider()
+    st.header("Craft and Predict Movie Idea!")
     a, b = st.columns([1,1])
     with a:
         title = st.text_input("Movie Title")
