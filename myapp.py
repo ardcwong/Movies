@@ -97,13 +97,13 @@ with col2:
         prediction_num = model.predict(transaction)[0]
         pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
-        return prediction
+        return prediction, transaction
 
     if not choice == 0:
         
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         if st.button("Predict"):
-            output = predict_if_AAA(movie_index_label)
+            output, transaction = predict_if_AAA(movie_index_label)
         
             if output == 'AAA':
                 st.success('Movie could be the next AAA title!')
@@ -116,7 +116,7 @@ with col2:
         
             
             instance_index = X_holdout.index.get_loc(movie_index_label)
-            shap_values_single = explainer(X_holdout.loc[movie_index_label],check_additivity=False)
+            shap_values_single = explainer(transaction,check_additivity=False)
             # shap.force_plot(
             #     explainer.expected_value, 
             #     shap_values[instance_index],  
