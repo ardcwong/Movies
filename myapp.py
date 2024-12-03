@@ -23,7 +23,7 @@ st.set_page_config(
 st.header("TEST!")
 
 # read model and holdout data
-model_initial = pickle.load(open('xgb.pkl', 'rb'))
+# model_initial = pickle.load(open('xgb.pkl', 'rb'))
 model = joblib.load('xgb.pkl')
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
 movies = pd.read_csv('data/movies.csv')
