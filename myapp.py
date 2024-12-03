@@ -8,6 +8,8 @@ import joblib
 from flask import Flask
 import streamlit as st
 import shap
+import matplotlib.pyplot as plt
+import numpy as np
 
 st.set_page_config(
     page_title = "Predict the Next AAA Title!",
@@ -28,7 +30,7 @@ holdout_transactions = X_holdout.index.to_list()
 
 # SHAP
 explainer = shap.TreeExplainer(model.named_steps['xgbclassifier'])
-shap_values = explainer.shap_values(X_holdout, check_additivity=False)
+# shap_values = explainer.shap_values(X_holdout, check_additivity=False)
 
 col1, col2, col3 = st.columns([0.5, 3, 0.5])
 with col2:
@@ -114,6 +116,7 @@ with col2:
         
             
             instance_index = X_holdout.index.get_loc(movie_index_label)
+            shap_values_single = explainer.shap_values(X_holdout.loc[movie_index_label],check_additivity=False)
             # shap.force_plot(
             #     explainer.expected_value, 
             #     shap_values[instance_index],  
