@@ -115,11 +115,11 @@ with col2:
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
 
             shap_values_single = explainer(transaction,check_additivity=False)
-            st.write(type(shap_values_single))
+            st.write(shap_values_single)
             
             shap_html = shap.force_plot(
                 explainer.expected_value, 
-                shap_values_single[0],  
+                shap_values_single,  
                 transaction, 
                 feature_names=X_holdout.columns.tolist()
             )
