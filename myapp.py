@@ -114,11 +114,10 @@ with col2:
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
 
-            instance_index = X_holdout.index.get_loc(movie_index_label)
             shap_values_single = explainer(transaction,check_additivity=False)
             shap_html = shap.force_plot(
                 explainer.expected_value, 
-                shap_values_single[instance_index],  
+                shap_values_single[0],  
                 transaction, 
                 feature_names=X_holdout.columns.tolist()
             )
