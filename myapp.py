@@ -107,5 +107,4 @@ with col2:
     
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
-    else
-        pass
+
