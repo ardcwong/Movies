@@ -20,7 +20,6 @@ st.set_page_config(
     'About': "### Hi! Thanks for viewing my app!"
     }
 )
-st.header("TEST!")
 
 # read model and holdout data
 # model_initial = pickle.load(open('xgb.pkl', 'rb'))
@@ -80,8 +79,10 @@ with col2:
 
     #adding a selectbox
     choice = st.selectbox(
-        "Select Transaction Number:",
-        options = X_holdout_id_map["primaryTitle"].to_list())
+        "Choose Movie to Predict:",
+        options = X_holdout_id_map["primaryTitle"].to_list(),
+        placeholder = "Type or Search the Movie. See (?) for more details."
+        help = "These movies are treated as unseen data of the Predictive Model.")
     
     
     def predict_if_AAA(transaction_id):
@@ -90,11 +91,16 @@ with col2:
         pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
         return prediction
-    
+
+
+    movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
     if st.button("Predict"):
-        output = predict_if_AAA(X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0])
+        output = predict_if_AAA(movie_index_label)
     
         if output == 'AAA':
             st.success('AAA')
         elif output == 'Not AAA':
             st.error('Not AAA')
+
+        IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
+        st.markdown(f"IMDB Rating = {}")
