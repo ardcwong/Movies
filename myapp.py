@@ -25,8 +25,8 @@ st.set_page_config(
 # read model and holdout data
 model = pickle.load(open('xgb.pkl', 'rb'))
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
-X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
 movies = pd.read_csv('data/movies.csv')
+X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
 holdout_transactions = X_holdout.index.to_list()
 
 
