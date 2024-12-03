@@ -122,7 +122,7 @@ with col2:
                 explainer.expected_value, 
                 shap_values_single,  
                 transaction, 
-                feature_names=transaction.columns.tolist()
+                feature_names=X_holdout.columns.tolist()
             )
             st.markdown("<h3>SHAP Force Plot:</h3>", unsafe_allow_html=True)
             st.components.v1.html(shap_html.html(), height=400)
