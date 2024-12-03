@@ -7,7 +7,7 @@
 # general libraries
 import pickle
 import pandas as pd
-
+import joblib
 # model deployment
 from flask import Flask
 import streamlit as st
@@ -23,7 +23,8 @@ st.set_page_config(
 st.header("TEST!")
 
 # read model and holdout data
-model = pickle.load(open('xgb.pkl', 'rb'))
+model_initial = pickle.load(open('xgb.pkl', 'rb'))
+model = joblib.load('xgb.pkl')
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
 movies = pd.read_csv('data/movies.csv')
 X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
