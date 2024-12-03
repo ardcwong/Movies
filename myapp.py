@@ -89,7 +89,7 @@ with col2:
         placeholder = "Type or Search the Movie. See (?) for more details.",
         index = None,
         help = "These movies are treated as unseen data of the Predictive Model.")
-
+    st.write(choice)
     
     
     def predict_if_AAA(transaction_id):
