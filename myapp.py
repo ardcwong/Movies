@@ -98,9 +98,9 @@ with col2:
         output = predict_if_AAA(movie_index_label)
     
         if output == 'AAA':
-            st.success('AAA')
+            st.success('Movie could be the next AAA title!')
         elif output == 'Not AAA':
             st.error('Not AAA')
 
         IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
-        st.markdown(f"IMDB Rating = {}")
+        st.markdown(f"IMDB Rating = {IMDB_Rating}")
