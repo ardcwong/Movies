@@ -8,7 +8,7 @@ import joblib
 from flask import Flask
 import streamlit as st
 import shap
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 from streamlit_shap import st_shap
 
@@ -120,8 +120,20 @@ with col2:
                 explainer.expected_value, 
                 shap_values_single[0],  
                 transaction[0], 
-                feature_names=X_holdout.columns.tolist()
+                feature_names=X_holdout.columns.tolist(),
+                matplotlib=True
             ))
+
+
+            # Set a dark background for plots
+            plt.style.use("dark_background")
+            
+            # Use light colors for better contrast
+            plt.rcParams['axes.prop_cycle'] = plt.cycler(color=["cyan", "magenta", "yellow", "lightblue"])
+            plt.rcParams['text.color'] = "white"
+            plt.rcParams['axes.labelcolor'] = "white"
+            plt.rcParams['xtick.color'] = "white"
+            plt.rcParams['ytick.color'] = "white"
             # st.write(shap_values_single)
             # st.write(explainer.expected_value)
             # st.write(transaction)
