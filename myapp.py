@@ -91,7 +91,7 @@ with col2:
         return prediction
     
     if st.button("Predict"):
-        output = predict_if_AAA(X_holdout_id_map[X_holdout_id_map['Title'] == choice].index[0])
+        output = predict_if_AAA(X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0])
     
         if output == 'Fraud':
             st.sucess('AAA')
