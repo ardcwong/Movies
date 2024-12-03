@@ -10,6 +10,7 @@ import streamlit as st
 import shap
 # import matplotlib.pyplot as plt
 import numpy as np
+from streamlit_shap import st_shap
 
 st.set_page_config(
     page_title = "Predict the Next AAA Title!",
@@ -119,11 +120,11 @@ with col2:
             st.write(explainer.expected_value)
             st.write(transaction)
             st.write(type(shap_values_single))
-            shap_html = shap.force_plot(
+            st_shap(shap.force_plot(
                 explainer.expected_value, 
                 shap_values_single,  
                 transaction[0], 
                 feature_names=X_holdout.columns.tolist()
-            )
-            st.markdown("<h3>SHAP Force Plot:</h3>", unsafe_allow_html=True)
-            st.components.v1.html(shap_html.html(), height=400)
+            ))
+            # st.markdown("<h3>SHAP Force Plot:</h3>", unsafe_allow_html=True)
+            # st.components.v1.html(shap_html.html(), height=400)
