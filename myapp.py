@@ -98,22 +98,25 @@ with col2:
         prediction_num = model.predict(transaction)[0]
         pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
-        return prediction, transaction
+        prediction_score = model.predict_proba(transaction)[0][1]
+        return prediction, transaction,prediction_score
+
 
     if choice:
         
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         st.write(movie_index_label)
         if st.button("Predict"):
-            output, transaction = predict_if_AAA(movie_index_label)
+            output, transaction, prediction_score = predict_if_AAA(movie_index_label)
         
             if output == 'AAA':
                 st.success('Movie could be the next AAA title!')
             elif output == 'Not AAA':
                 st.error('Not AAA')
-    
+            st.write(f"Prediction Probability for AAA: {prediction_score}")
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
+        
 
             shap_values_single = explainer.shap_values(transaction,check_additivity=False)
             st_shap(shap.force_plot(
