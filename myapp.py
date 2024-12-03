@@ -103,7 +103,7 @@ with col2:
 
 
     if choice:
-        
+        st.write( X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice])
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         st.write(movie_index_label)
         if st.button("Predict"):
