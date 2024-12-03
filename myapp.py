@@ -98,7 +98,7 @@ with col2:
         prediction_num = model.predict(transaction)[0]
         pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
-        prediction_score = model.predict_proba(transaction)[0][1]
+        prediction_score = model.predict_proba(transaction)[0][1]:.2f
         return prediction, transaction,prediction_score
 
 
@@ -113,7 +113,14 @@ with col2:
                 st.success('Movie could be the next AAA title!')
             elif output == 'Not AAA':
                 st.error('Not AAA')
+
+
+
             st.write(f"Prediction Probability for AAA: {prediction_score}")
+            # Convert raw score to probability
+            probability = 1 / (1 + np.exp(-1))
+            st.write(f"Probability for 'AAA' (calculated from raw score): {probability:.2%}")
+            
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
         
