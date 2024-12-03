@@ -111,11 +111,11 @@ with col2:
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
 
         
-            shap_values = explainer.shap_values(X_holdout, check_additivity=False)
-            instance_index = X_holdout.index.get_loc(movie_index_label)
-            shap.force_plot(
-                explainer.expected_value, 
-                shap_values[instance_index],  
-                X_holdout.loc[movie_index_label], 
-                feature_names=X_holdout.columns.tolist()
-            )
+            # shap_values = explainer.shap_values(X_holdout, check_additivity=False)
+            # instance_index = X_holdout.index.get_loc(movie_index_label)
+            # shap.force_plot(
+            #     explainer.expected_value, 
+            #     shap_values[instance_index],  
+            #     X_holdout.loc[movie_index_label], 
+            #     feature_names=X_holdout.columns.tolist()
+            # )
