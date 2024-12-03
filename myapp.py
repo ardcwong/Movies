@@ -99,7 +99,7 @@ with col2:
         prediction = pred_map[prediction_num]
         return prediction, transaction
 
-    if choice is not []:
+    if choice:
         
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         st.write(movie_index_label)
