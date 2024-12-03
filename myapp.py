@@ -2,15 +2,12 @@
 #####################################################################################################
 #########################################  IN PROGRESS  #############################################
 #####################################################################################################
-
-
-# general libraries
 import pickle
 import pandas as pd
 import joblib
-# model deployment
 from flask import Flask
 import streamlit as st
+import shap
 
 st.set_page_config(
     page_title = "Predict the Next AAA Title!",
@@ -29,6 +26,8 @@ movies = pd.read_csv('data/movies.csv')
 X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
 holdout_transactions = X_holdout.index.to_list()
 
+# SHAP
+explainer = shap.TreeExplainer(model.named_steps['xgbclassifier'])
 
 col1, col2, col3 = st.columns([0.5, 3, 0.5])
 with col2:
@@ -111,3 +110,12 @@ with col2:
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
 
+        
+        shap_values = explainer.shap_values(X_holdout, check_additivity=False)
+        instance_index = X_holdout.index.get_loc(movie_index_label)
+        shap.force_plot(
+            explainer.expected_value, 
+            shap_values[instance_index],  
+            X_holdout.loc[movie_index_label], 
+            feature_names=X_holdout.columns.tolist()
+        )
