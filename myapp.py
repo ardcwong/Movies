@@ -114,9 +114,9 @@ with col2:
         
             
             instance_index = X_holdout.index.get_loc(movie_index_label)
-            shap.force_plot(
-                explainer.expected_value, 
-                shap_values[instance_index],  
-                X_holdout.loc[movie_index_label], 
-                feature_names=X_holdout.columns.tolist()
-            )
+            # shap.force_plot(
+            #     explainer.expected_value, 
+            #     shap_values[instance_index],  
+            #     X_holdout.loc[movie_index_label], 
+            #     feature_names=X_holdout.columns.tolist()
+            # )
