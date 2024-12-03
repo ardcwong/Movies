@@ -89,7 +89,7 @@ with col2:
         placeholder = "Type or Search the Movie. See (?) for more details.",
         index = None,
         help = "These movies are treated as unseen data of the Predictive Model.")
-    st.write(choice)
+    # st.write(choice)
     
     
     def predict_if_AAA(transaction_id):
@@ -99,7 +99,7 @@ with col2:
         prediction = pred_map[prediction_num]
         return prediction, transaction
 
-    if not choice == 0:
+    if choice is not []:
         
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         st.write(movie_index_label)
