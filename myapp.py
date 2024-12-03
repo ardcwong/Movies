@@ -116,7 +116,7 @@ with col2:
 
 
 
-            st.write(f"Prediction Probability for AAA: {prediction_score[1]:.2f}")
+            st.write(f"Prediction Probability for AAA: {prediction_score[1]:.2%}")
             
             IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
