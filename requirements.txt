@@ -7,3 +7,4 @@ scikit-learn
 imbalanced-learn
 xgboost == 2.1
 matplotlib
+streamlit-shap
