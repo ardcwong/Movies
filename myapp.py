@@ -25,7 +25,9 @@ st.set_page_config(
 # read model and holdout data
 model = pickle.load(open('xgb.pkl', 'rb'))
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
+movies = pd.read_csv('data/movies.csv')
 holdout_transactions = X_holdout.index.to_list()
+
 
 col1, col2, col3 = st.columns([0.5, 3, 0.5])
 with col2:
@@ -77,20 +79,20 @@ with col2:
     #adding a selectbox
     choice = st.selectbox(
         "Select Transaction Number:",
-        options = holdout_transactions)
+        options = movies.loc(holdout_transactions)["primaryTitle"])
     
     
-    def predict_if_fraud(transaction_id):
+    def predict_if_AAA(transaction_id):
         transaction = X_holdout.loc[transaction_id].values.reshape(1, -1)
         prediction_num = model.predict(transaction)[0]
-        pred_map = {1: 'Fraud', 0: 'Not Fraud'}
+        pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
         return prediction
     
     if st.button("Predict"):
-        output = predict_if_fraud(choice)
+        output = predict_if_AAA(choice.index.get_loc(movies))
     
         if output == 'Fraud':
-            st.error('This transaction may be FRAUDULENT', icon="🚨")
+            st.sucess('AAA')
         elif output == 'Not Fraud':
-            st.success('This transaction is approved!', icon="✅")
+            st.error('Not AAA')
