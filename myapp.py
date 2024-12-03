@@ -116,7 +116,7 @@ with col2:
         
             
             instance_index = X_holdout.index.get_loc(movie_index_label)
-            shap_values_single = explainer.shap_values(X_holdout.loc[movie_index_label],check_additivity=False)
+            shap_values_single = explainer(X_holdout.loc[movie_index_label],check_additivity=False)
             # shap.force_plot(
             #     explainer.expected_value, 
             #     shap_values[instance_index],  
