@@ -121,7 +121,7 @@ with col2:
             shap_html = shap.force_plot(
                 explainer.expected_value, 
                 shap_values_single,  
-                transaction, 
+                transaction[0], 
                 feature_names=X_holdout.columns.tolist()
             )
             st.markdown("<h3>SHAP Force Plot:</h3>", unsafe_allow_html=True)
