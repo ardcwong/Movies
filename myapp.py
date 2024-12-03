@@ -84,6 +84,7 @@ with col2:
         placeholder = "Type or Search the Movie. See (?) for more details.",
         index = None,
         help = "These movies are treated as unseen data of the Predictive Model.")
+
     
     
     def predict_if_AAA(transaction_id):
@@ -93,15 +94,18 @@ with col2:
         prediction = pred_map[prediction_num]
         return prediction
 
-
-    movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
-    if st.button("Predict"):
-        output = predict_if_AAA(movie_index_label)
+    if choice != 0:
+        
+        movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
+        if st.button("Predict"):
+            output = predict_if_AAA(movie_index_label)
+        
+            if output == 'AAA':
+                st.success('Movie could be the next AAA title!')
+            elif output == 'Not AAA':
+                st.error('Not AAA')
     
-        if output == 'AAA':
-            st.success('Movie could be the next AAA title!')
-        elif output == 'Not AAA':
-            st.error('Not AAA')
-
-        IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
-        st.markdown(f"IMDB Rating = {IMDB_Rating}")
+            IMDB_Rating = X_holdout_id_map["averageRating"].loc[movie_index_label]
+            st.markdown(f"IMDB Rating = {IMDB_Rating}")
+    else
+        pass
