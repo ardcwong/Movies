@@ -45,7 +45,7 @@ with col2:
                     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
                 ">
                     <h1 style="font-size: 40px; margin-bottom: 10px; font-weight: bold; letter-spacing: 2px; color: white; text-transform: capitalize;">
-                        PREDICT THE AAA MOVIE TITLE
+                        PREDICT THE NEXT AAA MOVIE!
                     </h1>
                     <p style="font-size: 16px; line-height: 1.5; letter-spacing: 1.5px; color: white;">
                         Welcome to the AAA Movie Predictor, a simple yet powerful app that predicts whether a movie will achieve AAA status based on its key characteristics. Using a fine-tuned XGBoost machine learning model, the app evaluates important factors such as: Runtime (in minutes), Genres, Actors, Directors, Writers. The app provides clear results: AAA – The movie is predicted to qualify as a top-tier AAA title, Not AAA – The movie is less likely to qualify as an AAA title.
@@ -54,7 +54,7 @@ with col2:
                 </div>
                 """,
                 unsafe_allow_html=True)
-
+    
     a, b = st.columns([1,1])
     with a:
         title = st.text_input("Movie Title")
@@ -74,7 +74,8 @@ with col2:
 
 
 
-
+    st.divider()
+    st.header("Predicting Unseen Movie Data")
     
 
     #adding a selectbox
