@@ -102,6 +102,7 @@ with col2:
     if not choice == 0:
         
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
+        st.write(movie_index_label)
         if st.button("Predict"):
             output, transaction = predict_if_AAA(movie_index_label)
         
