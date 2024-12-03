@@ -95,6 +95,6 @@ with col2:
         output = predict_if_AAA(X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0])
     
         if output == 'AAA':
-            st.sucess('AAA')
+            st.success('AAA')
         elif output == 'Not AAA':
             st.error('Not AAA')
