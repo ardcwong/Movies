@@ -124,7 +124,7 @@ with col2:
                 matplotlib=True
             ))
 
-
+            plt.set_cmap("coolwarm")
             # Set a dark background for plots
             plt.style.use("dark_background")
             
