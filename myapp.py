@@ -19,8 +19,8 @@ st.set_page_config(
 )
 
 # read model and holdout data
-# model_initial = pickle.load(open('xgb.pkl', 'rb'))
-model = joblib.load('xgb.pkl')
+model = pickle.load(open('xgb.pkl', 'rb'))
+# model = joblib.load('xgb.pkl')
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
 movies = pd.read_csv('data/movies.csv')
 X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
@@ -111,11 +111,11 @@ with col2:
             st.markdown(f"IMDB Rating = {IMDB_Rating}")
 
         
-            # shap_values = explainer.shap_values(X_holdout, check_additivity=False)
-            # instance_index = X_holdout.index.get_loc(movie_index_label)
-            # shap.force_plot(
-            #     explainer.expected_value, 
-            #     shap_values[instance_index],  
-            #     X_holdout.loc[movie_index_label], 
-            #     feature_names=X_holdout.columns.tolist()
-            # )
+            shap_values = explainer.shap_values(X_holdout, check_additivity=False)
+            instance_index = X_holdout.index.get_loc(movie_index_label)
+            shap.force_plot(
+                explainer.expected_value, 
+                shap_values[instance_index],  
+                X_holdout.loc[movie_index_label], 
+                feature_names=X_holdout.columns.tolist()
+            )
