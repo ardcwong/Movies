@@ -20,18 +20,22 @@ st.set_page_config(
     'About': "### Hi! Thanks for viewing my app!"
     }
 )
+def model_init():
+    # read model and holdout data
+    model = pickle.load(open('xgb.pkl', 'rb'))
+    # SHAP
+    explainer = shap.TreeExplainer(model.named_steps['xgbclassifier'])
+    return model, explainer
+# shap_values = explainer.shap_values(X_holdout, check_additivity=False)
 
-# read model and holdout data
-model = pickle.load(open('xgb.pkl', 'rb'))
+
 # model = joblib.load('xgb.pkl')
 X_holdout = pd.read_csv('data/X_holdout.csv', index_col=0)
 movies = pd.read_csv('data/movies.csv')
 X_holdout_id_map = X_holdout.merge(movies, left_index=True, right_index=True, how='left')
 holdout_transactions = X_holdout.index.to_list()
 
-# SHAP
-explainer = shap.TreeExplainer(model.named_steps['xgbclassifier'])
-# shap_values = explainer.shap_values(X_holdout, check_additivity=False)
+
 
 col1, col2, col3 = st.columns([0.5, 3, 0.5])
 with col2:
@@ -94,12 +98,13 @@ with col2:
     
     
     def predict_if_AAA(transaction_id):
+        model, explainer = model_init()
         transaction = X_holdout.loc[transaction_id].values.reshape(1, -1)
         prediction_num = model.predict(transaction)[0]
         pred_map = {1: 'AAA', 0: 'Not AAA'}
         prediction = pred_map[prediction_num]
         prediction_score = model.predict_proba(transaction)[0]
-        return prediction, transaction,prediction_score
+        return prediction, transaction,prediction_score, model, explainer
 
 
     if choice:
@@ -107,7 +112,7 @@ with col2:
         movie_index_label = X_holdout_id_map[X_holdout_id_map['primaryTitle'] == choice].index[0]
         st.write(movie_index_label)
         if st.button("Predict"):
-            output, transaction, prediction_score = predict_if_AAA(movie_index_label)
+            output, transaction, prediction_score, model, explainer = predict_if_AAA(movie_index_label)
         
             if output == 'AAA':
                 st.success('Movie could be the next AAA title!')
