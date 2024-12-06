@@ -64,21 +64,22 @@ with col2:
 
     st.divider()
     st.header("Craft and Predict Movie Idea!")
+    st.subheader("SOON!")
     a, b = st.columns([1,1])
-    with a:
-        title = st.text_input("Movie Title")
-        genre = st.multiselect("Genre",['Action', 'Adult', 'Adventure', 'Animation',
-           'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
-           'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
-           'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
-           'Talk-Show', 'Thriller', 'War', 'Western'])
-        runtime = st.number_input("Runtime (Minutes)", min_value = 0, max_value = 180)
+    # with a:
+    #     title = st.text_input("Movie Title")
+    #     genre = st.multiselect("Genre",['Action', 'Adult', 'Adventure', 'Animation',
+    #        'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
+    #        'Fantasy', 'Game-Show', 'History', 'Horror', 'Music', 'Musical',
+    #        'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Sport',
+    #        'Talk-Show', 'Thriller', 'War', 'Western'])
+    #     runtime = st.number_input("Runtime (Minutes)", min_value = 0, max_value = 180)
         
 
-    with b:
-        director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
-        writer = st.multiselect("Writer/s", ["D1","D2"])
-        actor = st.multiselect("Actor/s", ["D1","D2"])
+    # with b:
+    #     director = st.multiselect("Director/s",["D1","D2"]) #upload directors list
+    #     writer = st.multiselect("Writer/s", ["D1","D2"])
+    #     actor = st.multiselect("Actor/s", ["D1","D2"])
     
 
 
